@@ -11,12 +11,12 @@ using LaunchDarkly.Client;
 
 namespace LaunchDarklyQuickstart.Controllers
 {
-    public class HomeController : Controller
+    public class BetaController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
+        public BetaController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
@@ -28,17 +28,6 @@ namespace LaunchDarklyQuickstart.Controllers
             LaunchDarkly.Client.User user = LaunchDarkly.Client.User.WithKey(email);
             ViewBag.BetaFeatureEnabled = client.BoolVariation("beta", user, false);
             return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
