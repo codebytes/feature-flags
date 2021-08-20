@@ -15,3 +15,4 @@ jobs:
           accessToken: ${{ secrets.LD_ACCESS_TOKEN }}
           projKey: production
           ignoreServiceErrors: true
+          debug: true
