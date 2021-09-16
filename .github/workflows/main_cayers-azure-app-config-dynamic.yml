@@ -9,7 +9,7 @@ on:
       - main
   workflow_dispatch:
 env:
-  project: 'azure-app-config-dynamic/azure-app-config-dynamic.csproj'
+  project: 'azure-app-config-dynamic/azure_app_config_dynamic.csproj'
 jobs:
   build:
     runs-on: ubuntu-latest
