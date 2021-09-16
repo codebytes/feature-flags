@@ -1,14 +1,15 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App - cayers-azure-app-config-dynamic
+name: Build and deploy ASP.Net Core app to Azure Web App - cayers-azure-app-config-quickstart
 
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-
+env:
+  project: 'azure-app-config-dynamic/azure-app-config-dynamic.csproj'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,10 +24,10 @@ jobs:
         include-prerelease: true
 
     - name: Build with dotnet
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Release ${{ env.project }}
 
     - name: dotnet publish
-      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish -c Release ${{ env.project }} -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
@@ -51,7 +52,7 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'cayers-azure-app-config-dynamic'
+        app-name: 'cayers-azure-app-config-quickstart'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_986d04e95f184ec2b250fe66947b9c81 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_452d35cd46bd48279e5bd8c1d0203369 }}
         package: .
