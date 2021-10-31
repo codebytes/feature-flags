@@ -19,7 +19,6 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   }
 }
 
-
 module appConfig 'appconfig.bicep' = {
   name: 'appconfig'
 }
@@ -36,7 +35,6 @@ resource appService 'Microsoft.Web/sites@2020-06-01' = {
     }
   }
 }
-
 
 resource connectionString 'Microsoft.Web/sites/config@2020-06-01' = {
   parent: appService
