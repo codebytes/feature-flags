@@ -8,6 +8,8 @@ on:
         - '!**'
         - 'azure-app-config-quickstart/**'
         - 'IaC/**'
+  workflow_dispatch:
+
 env:
   path: 'azure-app-config-quickstart'
   project: 'azure-app-config-quickstart.csproj'
