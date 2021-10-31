@@ -81,7 +81,7 @@ jobs:
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v2
       with: 
-        app-name: ${{ steps.deploy-quickstart.outputs.appName }} # Replace with your app name
+        app-name: ${{ steps.deploy-quickstart.outputs.webAppName }} # Replace with your app name
         package: 'app'
     
     - name: logout
