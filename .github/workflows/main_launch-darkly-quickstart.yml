@@ -1,4 +1,4 @@
-name: Build and deploy ASP.Net Core app to Azure Web App - cayers-launch-darkly-quickstart
+name: launch-darkly-quickstart - Build and deploy ASP.Net Core app to Azure Web App 
 
 on:
   push:
@@ -75,7 +75,7 @@ jobs:
     - uses: azure/appservice-settings@v1
       with:
         app-name: ${{ steps.deploy.outputs.webAppName }} 
-        app-settings-json: '{ "LD_SDK_KEY": "${{ secrets.LD_SDK_KEY }}" }' 
+        app-settings-json: '[ { "name": "AppConfig", "value":  "${{ secrets.LD_SDK_KEY }}", "type": "Custom","slotSetting": false } ]' 
 
     - name: Download App
       uses: actions/download-artifact@v2
