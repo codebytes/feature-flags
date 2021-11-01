@@ -71,7 +71,12 @@ jobs:
         template: ./iac/main.bicep
         parameters: webAppName=${{ secrets.AZURE_APP_NAME }}
         failOnStdErr: false
-   
+
+    - uses: azure/appservice-settings@v1
+      with:
+        app-name: ${{ steps.deploy.outputs.webAppName }} 
+        app-settings-json: '{ "LD_SDK_KEY": "${{ secrets.LD_SDK_KEY }}" }' 
+
     - name: Download App
       uses: actions/download-artifact@v2
       with:
@@ -83,12 +88,6 @@ jobs:
       with: 
         app-name: ${{ steps.deploy.outputs.webAppName }} 
         package: 'app'
-
-    - uses: azure/appservice-settings@v1
-      with:
-        app-name: ${{ steps.deploy.outputs.webAppName }} 
-        app-settings-json: '{"LD_SDK_KEY": ${{ secrets.LD_SDK_KEY }} }' 
-
     
     - name: logout
       run: |
