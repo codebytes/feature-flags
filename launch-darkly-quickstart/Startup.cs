@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using LaunchDarkly.Sdk.Server;
+using LaunchDarkly.Sdk.Server.Interfaces;
 
 namespace LaunchDarklyQuickstart
 {
@@ -24,6 +26,7 @@ namespace LaunchDarklyQuickstart
         {
             services.AddControllersWithViews();
             services.AddSingleton<IConfiguration>(Configuration);
+            services.AddSingleton<ILdClient>((ILdClient)new LdClient(Configuration.GetValue<string>("LD_SDK_KEY")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

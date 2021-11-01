@@ -81,8 +81,14 @@ jobs:
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v2
       with: 
-        app-name: ${{ steps.deploy.outputs.webAppName }} # Replace with your app name
+        app-name: ${{ steps.deploy.outputs.webAppName }} 
         package: 'app'
+
+    - uses: azure/appservice-settings@v1
+      with:
+        app-name: ${{ steps.deploy.outputs.webAppName }} 
+        app-settings-json: '{"LD_SDK_KEY": ${{ secrets.LD_SDK_KEY }} }' 
+
     
     - name: logout
       run: |
