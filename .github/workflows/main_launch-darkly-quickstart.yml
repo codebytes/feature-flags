@@ -75,7 +75,8 @@ jobs:
     - uses: azure/appservice-settings@v1
       with:
         app-name: ${{ steps.deploy.outputs.webAppName }} 
-        app-settings-json: '[ { "name": "AppConfig", "value":  "${{ secrets.LD_SDK_KEY }}", "type": "Custom","slotSetting": false } ]' 
+        app-settings-json: '[ { "name": "LD_SDK_KEY", "value":  "${{ secrets.LD_SDK_KEY }}", "type": "Custom","slotSetting": false } ]' 
+        connection-strings-json: '[]'
 
     - name: Download App
       uses: actions/download-artifact@v2
