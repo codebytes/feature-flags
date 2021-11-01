@@ -7,26 +7,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using LaunchDarklyQuickstart.Models;
 using Microsoft.Extensions.Configuration;
-using LaunchDarkly.Client;
+using User = LaunchDarkly.Sdk.User;
+using LaunchDarkly.Sdk.Server.Interfaces;
 
 namespace LaunchDarklyQuickstart.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IConfiguration _configuration;
+        
+        private readonly ILdClient _ldClient;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, ILdClient ldClient)
         {
             _logger = logger;
-            _configuration = configuration;
+            _ldClient = ldClient;
         }
 
         public IActionResult Index(string email="default email address")
         {
-            LdClient client = new LdClient(_configuration["ConnectionStrings:AppConfig"]);
-            LaunchDarkly.Client.User user = LaunchDarkly.Client.User.WithKey(email);
-            ViewBag.BetaFeatureEnabled = client.BoolVariation("beta", user, false);
+            User user = LaunchDarkly.Sdk.User.WithKey(email);
+            ViewBag.BetaFeatureEnabled = _ldClient.BoolVariation("beta", user, false);
             return View();
         }
 
