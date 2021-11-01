@@ -1,5 +1,5 @@
-on: push
-name: Example Workflow
+on: [push, workflow_dispatch ]
+name: LD CodeScan Workflow
 jobs:
   launchDarklyCodeReferences:
     name: LaunchDarkly Code References
