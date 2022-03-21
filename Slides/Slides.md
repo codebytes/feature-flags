@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: default
+theme: gaia
 footer: '@Chris_L_Ayers - https://chrislayers.com'
 style: |
   .columns {
@@ -53,14 +53,13 @@ style: |
 
 ![bg left](./img/portrait.jpg)
 
-# Chris Ayers
-## Senior Customer Engineer<br>Microsoft
-### Social
+## Chris Ayers
+### Senior Customer Engineer<br>Microsoft
+
 - Twitter: @Chris\_L\_Ayers
 - LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
 - Blog: [https://chrislayers\.com/](https://chrislayers.com/)
 - GitHub: [Codebytes](https://github\.com/codebytes)
-
 
 ---
 ![bg left](./img/background.jpg)
@@ -73,29 +72,44 @@ style: |
 
 ---
 
+<div class="columns">
+<div>
+
 # What Are Feature Flags?
 Lets find out
+- Booleans in the code
+- Config values checked in
+
+</div>
+<div>
+
+## Basics
+```cs
+bool featureFlag = true;
+if (featureFlag) {
+    // Run the following code
+}
+```
+</div>
+</div>
+
+---
 
 <div class="columns">
 <div>
 
-## Original Code
-```cs
-public bool SomeAlgorithm(int param1, string param2)
-{
-  var result = DoStuff(param1);
-  return result;
-}
-```
+# What Are Feature Flags?
+Dynamic toggling based on some information and rules
+
 </div>
 <div>
 
-## Updated Code
+## Dynamic
 ```cs
-public bool SomeAlgorithm(int param1, string param2)
-{
-  var result = DoStuff(param1);
-  return result;
+bool featureFlag = isBetaUser();
+
+if (featureFlag) {
+    // Run the following code
 }
 ```
 </div>
@@ -125,14 +139,35 @@ Feature flags can be simple configuration settings with Boolean, string or other
 </div>
 <div>
 
-### <i class="fa fa-th-large"></i> Code Separation
-### <i class="fa fa-users"></i> Minimize Disruption to Customers
-### <i class="fa fa-refresh"></i> Progressive Rollouts
-### <i class="fa fa-flask"></i> A/B Testing
-### <i class="fa fa-ban"></i> Kill Switch
+#### <i class="fa fa-users"></i> Minimize Disruption to Customers
+
+#### <i class="fa fa-refresh"></i> Progressive / Incremental Rollouts
+#### <i class="fa fa-flask"></i> A/B Testing - Hypothesis Driven Development
+#### <i class="fa fa-ban"></i> Kill Switch
+#### <i class="fa fa-check-square-o"></i> Allow Users to Opt In
 
 </div>
+</div>
 
+---
+
+<div class="columns">
+<div>
+
+# Feature Flags have different uses
+
+</div>
+<div>
+
+#### <i class="fa fa-users"></i> Block Users
+#### <i class="fa fa-calendar"></i> Calendar Events
+#### <i class="fa fa-newspaper-o"></i> Subscriptions
+#### <i class="fa fa-sliders"></i> Advanced Users
+#### <i class="fa fa-wrench"></i> Maintenance Mode
+#### <i class="fa fa-th-large"></i> Code Separation
+#### <i class="fa fa-power-off"></i> Sunset / Power Down
+
+</div>
 </div>
 
 ---
@@ -214,53 +249,32 @@ Feature flags can be simple configuration settings with Boolean, string or other
 
 # Its all about control
 
-<div class="columns">
-<div>
-
-## How do you turn it on and off?
+#### How do you turn it on and off?
   - Per checkin?
   - Per server?
   - Per user?
   - Dynamically?
 
-</div>
-<div>
 
-<br>
-<br>
-
-![bg right contain](./img/feature-flag-management.png)
-
-</div>
-</div>
+![bg right:50% contain](./img/feature-flag-management.png)
 
 ---
 
 
-<div class="columns">
-<div>
-
 # Flag Targeting
 
-</div>
-<div>
-
 <br>
 <br>
 
-- Targeting Groups
-	- <i class="fa fa-clock-o"></i> Time
-	- <i class="fa fa-map-o"></i> Region
-	- <i class="fa fa-user-circle-o"></i> User Details
-- Percentages
-	- <i class="fa fa-percent"></i> 10%/90% 
-	- <i class="fa fa-percent"></i> 50%/50%
-- Triggers
-	- <i class="fa fa-line-chart"></i> Rise in failures
-	- <i class="fa fa-bar-chart"></i> Load
+<style scoped>
+table {
+    width: 100%;
+}
+</style>
 
-</div>
-</div>
+|Targeting|Percentages|Triggers
+|-|-|-|
+|	<i class="fa fa-clock-o"></i> Time<br><i class="fa fa-map-o"></i> Region<br><i class="fa fa-user-circle-o"></i> User Details|<i class="fa fa-percent"></i> 10%/90%<br><i class="fa fa-percent"></i> 50%/50%|<i class="fa fa-line-chart"></i> Rise in failures<br><i class="fa fa-bar-chart"></i> Load
 
 ---
 
@@ -268,6 +282,7 @@ Feature flags can be simple configuration settings with Boolean, string or other
 
 - Feature Flags are Technical Debt As Soon as You Add Them
 - As you add flags, it can be harder to support and debug the system.
+https://github.com/launchdarkly/featureflags/blob/master/2%20-%20Uses.md
 
 ---
 
