@@ -51,7 +51,7 @@ style: |
 
 ---
 
-![bg left](./img/portrait.jpg)
+![bg left:40%](./img/portrait.jpg)
 
 ## Chris Ayers
 ### Senior Customer Engineer<br>Microsoft
@@ -59,7 +59,7 @@ style: |
 - Twitter: @Chris\_L\_Ayers
 - LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
 - Blog: [https://chrislayers\.com/](https://chrislayers.com/)
-- GitHub: [Codebytes](https://github\.com/codebytes)
+- GitHub: [Codebytes](https://github.com/codebytes)
 
 ---
 ![bg left](./img/background.jpg)
@@ -144,7 +144,7 @@ Feature flags can be simple configuration settings with Boolean, string or other
 #### <i class="fa fa-refresh"></i> Progressive / Incremental Rollouts
 #### <i class="fa fa-flask"></i> A/B Testing - Hypothesis Driven Development
 #### <i class="fa fa-ban"></i> Kill Switch
-#### <i class="fa fa-check-square-o"></i> Allow Users to Opt In
+#### <i class="fa fa-calendar"></i> Calendar Events
 
 </div>
 </div>
@@ -159,13 +159,14 @@ Feature flags can be simple configuration settings with Boolean, string or other
 </div>
 <div>
 
+#### <i class="fa fa-check-square-o"></i> Allow Users to Opt In
 #### <i class="fa fa-users"></i> Block Users
-#### <i class="fa fa-calendar"></i> Calendar Events
 #### <i class="fa fa-newspaper-o"></i> Subscriptions
 #### <i class="fa fa-sliders"></i> Advanced Users
 #### <i class="fa fa-wrench"></i> Maintenance Mode
+#### <i class="fa fa-line-chart"></i> Load Management
 #### <i class="fa fa-th-large"></i> Code Separation
-#### <i class="fa fa-power-off"></i> Sunset / Power Down
+#### <i class="fa fa-power-off"></i> Sunset / Shut Off
 
 </div>
 </div>
@@ -199,11 +200,12 @@ Feature flags can be simple configuration settings with Boolean, string or other
 </div>
 <div>
 
-### <i class="fa fa-dollar"></i> Licensing
-### <i class="fa fa-gears"></i> Advanced features
-### <i class="fa fa-code"></i> Integrations
-### <i class="fa fa-flag"></i> Operational Flags
-### <i class="fa fa-line-chart"></i> Load Management
+- Features can start out as flags and become business rules.
+- Feature flags can turn into *Operational Flags*.
+- You can leverage patterns instead of just an ***if*** statement
+    - Strategy Pattern
+    - Visitor Pattern 
+    - Command Pattern
 
 </div>
 
