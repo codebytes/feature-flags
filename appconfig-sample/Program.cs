@@ -8,19 +8,25 @@ using appconfig_sample;
 var builder = WebApplication.CreateBuilder(args);
 
 var appConfigConnectionString = builder.Configuration.GetConnectionString("AppConfig");
-builder.Host.ConfigureAppConfiguration(builder =>
-                {
-                    //Connect to your App Config Store using the connection string
-                    builder
-                        .AddAzureAppConfiguration(options =>
-                            options.Connect(appConfigConnectionString)
-                                .ConfigureRefresh(refreshOpt =>
-                                    {
-                                        refreshOpt.Register(key: "Beta", refreshAll: true)
-                                        .SetCacheExpiration(new TimeSpan(0, 0, 5));
-                                    })
-                                .UseFeatureFlags());
-                });
+
+// builder.Configuration.AddAzureAppConfiguration(connectionString);
+builder.Configuration.AddAzureAppConfiguration(options =>
+{
+    options.Connect(appConfigConnectionString)
+           // Configure to reload configuration if the registered key 'WebDemo:Sentinel' is modified.
+           // Use the default cache expiration of 30 seconds. It can be overriden via AzureAppConfigurationRefreshOptions.SetCacheExpiration.
+           .ConfigureRefresh(refreshOptions =>
+           {
+               refreshOptions.Register("Sentinel", refreshAll: true)
+                             .SetCacheExpiration(TimeSpan.FromSeconds(5)); 
+           })
+           // Load all feature flags with no label. To load specific feature flags and labels, set via FeatureFlagOptions.Select.
+           // Use the default cache expiration of 30 seconds. It can be overriden via FeatureFlagOptions.CacheExpirationInterval.
+           .UseFeatureFlags(featureFlagOptions =>
+           {
+               featureFlagOptions.CacheExpirationInterval = TimeSpan.FromSeconds(5);
+           });
+});
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -32,8 +38,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddFeatureManagement()
-    .AddFeatureFilter<TargetingFilter>();
+builder.Services.AddAzureAppConfiguration()
+                .AddFeatureManagement()
+                .AddFeatureFilter<TargetingFilter>();
 
 builder.Services.AddSingleton<ITargetingContextAccessor, TestTargetingContextAccessor>();
 
