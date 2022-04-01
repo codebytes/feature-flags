@@ -1,0 +1,154 @@
+name: Build and deploy ASP.Net Core app to Azure Web App - cayers-azure-app-config-dynamic
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+        - '!**'
+        - 'appconfig-sample/**'
+        - 'IaC/**'
+  workflow_dispatch:
+
+env:
+  path: 'appconfig-sample'
+  project: 'appconfig-sample.csproj'
+
+jobs:
+  build-appconfig:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ${{ env.path }}
+    - name: Build with dotnet
+      run: dotnet build --no-restore --configuration Release ${{ env.project }}
+      working-directory: ${{ env.path }}
+    - name: Test
+      run: dotnet test --no-build --verbosity normal ${{ env.project }}
+      working-directory: ${{ env.path }}
+    - name: dotnet publish
+      run: dotnet publish -c Release ${{ env.project }} -o ../webapp
+      working-directory: ${{ env.path }}
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v2
+      with:
+        name: app
+        path: webapp
+    - uses: actions/upload-artifact@v1
+      with:
+        name: IaC
+        path: IaC        
+  deploy-webapp:
+    needs: [build-appconfig]
+    environment: appConfig
+    runs-on: ubuntu-latest
+    steps:
+     # Checkout code
+    - name: Download IaC
+      uses: actions/download-artifact@v2
+      with:
+        name: IaC
+        path: iac
+
+      # Log into Azure
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Deploy Bicep file
+    - name: deploy
+      id: deploy
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        resourceGroupName: ${{ secrets.AZURE_RG }}
+        template: ./iac/main.bicep
+        parameters: webAppName=${{ secrets.AZURE_APP_NAME }} featureFlagFeatureARollout=0
+        failOnStdErr: false
+   
+    - name: Download App
+      uses: actions/download-artifact@v2
+      with:
+        name: app  
+        path: app
+
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: ${{ steps.deploy.outputs.webAppName }} # Replace with your app name
+        package: 'app'
+    
+    - name: logout
+      run: |
+        az logout
+
+  progressive-rollout-webapp:
+    needs: [build-appconfig]
+    environment: appConfig
+    runs-on: ubuntu-latest
+    steps:
+     # Checkout code
+    - name: Download IaC
+      uses: actions/download-artifact@v2
+      with:
+        name: IaC
+        path: iac
+
+      # Log into Azure
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Deploy Bicep file
+    - name: deploy
+      id: deploy
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        resourceGroupName: ${{ secrets.AZURE_RG }}
+        template: ./iac/main.bicep
+        parameters: webAppName=${{ secrets.AZURE_APP_NAME }} featureFlagFeatureARollout=50
+        failOnStdErr: false
+   
+    - name: logout
+      run: |
+        az logout
+
+  rollout-webapp:
+    needs: [build-appconfig]
+    environment: appConfig
+    runs-on: ubuntu-latest
+    steps:
+     # Checkout code
+    - name: Download IaC
+      uses: actions/download-artifact@v2
+      with:
+        name: IaC
+        path: iac
+
+      # Log into Azure
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Deploy Bicep file
+    - name: deploy
+      id: deploy
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        resourceGroupName: ${{ secrets.AZURE_RG }}
+        template: ./iac/main.bicep
+        parameters: webAppName=${{ secrets.AZURE_APP_NAME }} featureFlagFeatureARollout=100
+        failOnStdErr: false
+   
+    - name: logout
+      run: |
+        az logout
+
