@@ -89,7 +89,7 @@ jobs:
         az logout
 
   progressive-rollout-webapp:
-    needs: [build-appconfig]
+    needs: [deploy-webapp]
     environment: appConfig
     runs-on: ubuntu-latest
     steps:
@@ -121,7 +121,7 @@ jobs:
         az logout
 
   rollout-webapp:
-    needs: [build-appconfig]
+    needs: [progressive-rollout-webapp]
     environment: appConfig
     runs-on: ubuntu-latest
     steps:
