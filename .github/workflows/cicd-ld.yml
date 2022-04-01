@@ -6,12 +6,12 @@ on:
       - main
     paths:
         - '!**'
-        - 'launch-darkly-quickstart/**'
+        - 'launch-darkly-sample/**'
         - 'IaC/**'
   workflow_dispatch:
 
 env:
-  path: 'launch-darkly-quickstart'
+  path: 'launch-darkly-sample'
   project: 'launchdarklymvc.csproj'
 
 jobs:
@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up .NET Core
+    - name: Set up .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.0.x'
+        dotnet-version: '6.0.x'
     - name: Restore dependencies
       run: dotnet restore
       working-directory: ${{ env.path }}
@@ -68,7 +68,7 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./iac/main.bicep
+        template: ./iac/main-ld.bicep
         parameters: webAppName=${{ secrets.AZURE_APP_NAME }}
         failOnStdErr: false
 
