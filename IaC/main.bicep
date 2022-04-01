@@ -51,6 +51,7 @@ module featureFlagFeatureA 'featureFlag.bicep' = {
   params: {
     configStoreName: configStoreName
     featureFlagKey: 'FeatureA'
+    featureFlagEnabled: true
     featureProgressiveRollout: true
     featureRolloutPercentage: featureFlagFeatureARollout
   }
