@@ -69,7 +69,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./iac/main.bicep
-        parameters: webAppName=${{ secrets.AZURE_APP_NAME }} featureFlagFeatureARollout=0
+        parameters: webAppName=${{ secrets.AZURE_APP_NAME }} featureFlagBetaEnabled=true featureFlagFeatureARollout=0
         failOnStdErr: false
    
     - name: Download App
@@ -113,7 +113,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./iac/main.bicep
-        parameters: webAppName=${{ secrets.AZURE_APP_NAME }} featureFlagFeatureARollout=50
+        parameters: webAppName=${{ secrets.AZURE_APP_NAME }} featureFlagBetaEnabled=true featureFlagFeatureARollout=50
         failOnStdErr: false
    
     - name: logout
@@ -145,7 +145,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./iac/main.bicep
-        parameters: webAppName=${{ secrets.AZURE_APP_NAME }} featureFlagFeatureARollout=100
+        parameters: webAppName=${{ secrets.AZURE_APP_NAME }} featureFlagBetaEnabled=true featureFlagFeatureARollout=100
         failOnStdErr: false
    
     - name: logout

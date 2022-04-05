@@ -4,6 +4,7 @@ param location string = resourceGroup().location // Location for all resources
 
 param linuxFxVersion string = 'DOTNETCORE|6.0' // The runtime stack of web app
 
+param featureFlagBetaEnabled bool = false // Enable or disable the beta feature flag
 param featureFlagFeatureARollout int = 0
 
 param configStoreName string = toLower('appconfig-${webAppName}')
@@ -40,6 +41,7 @@ module featureFlagBeta 'featureFlag.bicep' = {
   params: {
     configStoreName: configStoreName
     featureFlagKey: 'Beta'
+    featureFlagEnabled: featureFlagBetaEnabled
   }
 }
 
