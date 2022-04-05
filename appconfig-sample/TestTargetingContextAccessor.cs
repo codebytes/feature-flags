@@ -1,10 +1,10 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.FeatureManagement.FeatureFilters;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace appconfig_sample;
+namespace appconfig_sample
+{
 public class TestTargetingContextAccessor : ITargetingContextAccessor
     {
         private const string TargetingContextLookup = "TestTargetingContextAccessor.TargetingContext";
@@ -36,3 +36,4 @@ public class TestTargetingContextAccessor : ITargetingContextAccessor
             return new ValueTask<TargetingContext>(targetingContext);
         }
     }
+}
