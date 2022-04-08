@@ -9,7 +9,7 @@
 			// Append -bullseye or -focal to pin to an OS version.
 			"VARIANT": "6.0",
 			// Options
-			"NODE_VERSION": "none"
+			"NODE_VERSION": "lts/*"
 		}
 	},
 
@@ -19,7 +19,8 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"ms-dotnettools.csharp",
-		"ms-azuretools.vscode-bicep"
+		"ms-azuretools.vscode-bicep",
+		"marp-team.marp-vscode"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

@@ -311,3 +311,30 @@ https://github.com/launchdarkly/featureflags/blob/master/2%20-%20Uses.md
 
 ![bg auto](./img/background.jpg)
 ![bg](./img/owl.png)
+
+---
+
+# Resources
+
+<div class="columns">
+<div>
+
+## Links
+
+- [https://github.com/microsoft/FeatureManagement-Dotnet](https://github.com/microsoft/FeatureManagement-Dotnet)
+- [https://docs.microsoft.com/en-us/azure/azure-app-configuration/](https://docs.microsoft.com/en-us/azure/azure-app-configuration/)
+- [https://github.com/codebytes](https://github.com/codebytes)
+
+</div>
+<div>
+
+## Chris Ayers
+- Twitter: @Chris\_L\_Ayers
+- LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
+- Blog: [https://chrislayers\.com/](https://chrislayers.com/)
+- GitHub: [Codebytes](https://github.com/codebytes)
+
+</div>
+
+</div>
+
