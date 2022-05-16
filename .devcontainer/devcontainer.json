@@ -20,6 +20,8 @@
 	"extensions": [
 		"ms-dotnettools.csharp",
 		"ms-azuretools.vscode-bicep",
+		"yzhang.markdown-all-in-one",
+		"streetsidesoftware.code-spell-checker",
 		"marp-team.marp-vscode"
 	],
 
