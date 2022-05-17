@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "appconfig-sample", "appconf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "launchdarklymvc", "launch-darkly-sample\launchdarklymvc.csproj", "{628D3DBD-2164-490E-8B11-5BB8CEB15F6B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feature-management", "feature-management\feature-management.csproj", "{490D1B8F-DED5-48B3-BC05-AF4D7156D4CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{628D3DBD-2164-490E-8B11-5BB8CEB15F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{628D3DBD-2164-490E-8B11-5BB8CEB15F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{628D3DBD-2164-490E-8B11-5BB8CEB15F6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{490D1B8F-DED5-48B3-BC05-AF4D7156D4CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{490D1B8F-DED5-48B3-BC05-AF4D7156D4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{490D1B8F-DED5-48B3-BC05-AF4D7156D4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{490D1B8F-DED5-48B3-BC05-AF4D7156D4CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
