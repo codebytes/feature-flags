@@ -10,6 +10,9 @@ on:
         - 'IaC/**'
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  
 env:
   path: 'launch-darkly-sample'
   project: 'launchdarklymvc.csproj'
