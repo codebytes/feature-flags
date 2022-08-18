@@ -8,7 +8,7 @@ public class IndexModel : PageModel
 {
     public readonly IFeatureManager _featureManager;
     private readonly ILogger<IndexModel> _logger;
-    public string Message { get; set; }
+    public string Message { get; set; } = string.Empty;
 
     public IndexModel(ILogger<IndexModel> logger, IFeatureManager featureManager)
     {
@@ -18,7 +18,7 @@ public class IndexModel : PageModel
 
     public async Task OnGet()
     {
-        Message = await _featureManager.IsEnabledAsync(nameof(FeatureFlags.FeatureA))
+        Message = await _featureManager.IsEnabledAsync(nameof(FeatureFlags.FeatureMessage))
                         ? "Welcome to the feature flag"
                         : "Welcome";
     }
