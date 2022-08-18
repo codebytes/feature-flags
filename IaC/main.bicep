@@ -6,12 +6,12 @@ param linuxFxVersion string = 'DOTNETCORE|6.0' // The runtime stack of web app
 
 param featureFlagBetaEnabled bool = false // Enable or disable the beta feature flag
 param featureFlagFeatureARollout int = 0
+param suffix string = '-cayers${uniqueString(resourceGroup().id)}'
 
-param configStoreName string = toLower('appconfig-${webAppName}')
+param configStoreName string = toLower('appconfig-${webAppName}${suffix}')
 
 var appServicePlanName = toLower('AppServicePlan-FeatureFlags')
-var webSiteName = toLower('wapp-${webAppName}')
-
+var webSiteName = toLower('wapp-${webAppName}${suffix}')
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   name: appServicePlanName
@@ -77,7 +77,7 @@ resource connectionString 'Microsoft.Web/sites/config@2020-06-01' = {
   parent: appService
   name: 'connectionstrings'
   properties: {
-    'AppConfig': {
+    AppConfig: {
       value: appConfig.outputs.configStoreConnectionString
       type:'Custom'
     }
