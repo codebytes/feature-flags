@@ -65,10 +65,17 @@ style: |
 ![bg left](./img/background.jpg)
 
 # Agenda
-- What are Feature Flags?
-- Why use Feature Flags?
-- Deployment vs Release
-- Operationalizing Flags
+- #### What are Feature Flags?
+- #### Why use Feature Flags?
+- #### Operationalizing Flags
+
+---
+
+# What is a Feature Flag?
+
+Feature Flags are also known as Feature Toggles.
+
+Feature flags can be simple configuration settings with Boolean, string or other values.
 
 ---
 
@@ -82,6 +89,8 @@ Lets find out
 
 </div>
 <div>
+<br>
+<br>
 
 ## Basics
 ```cs
@@ -103,6 +112,8 @@ Dynamic toggling based on some information and rules
 
 </div>
 <div>
+<br>
+<br>
 
 ## Dynamic
 ```cs
@@ -115,14 +126,6 @@ if (featureFlag) {
 </div>
 
 </div>
-
----
-
-# What is a Feature Flag?
-
-Feature Flags are also known as Feature Toggles.
-
-Feature flags can be simple configuration settings with Boolean, string or other values.
 
 ---
 
@@ -177,10 +180,12 @@ Feature flags can be simple configuration settings with Boolean, string or other
 <div>
 
 # Not all Flags are the same
-## Short Term
+
 
 </div>
 <div>
+
+## Short Term
 
 - These are used to roll out new features or conduct experiments.  
 - They can be found anywhere, and can be more complex. 
@@ -195,10 +200,12 @@ Feature flags can be simple configuration settings with Boolean, string or other
 <div>
 
 # Not all Flags are the same
-## Long Term
+
 
 </div>
 <div>
+
+## Long Term
 
 - Features can start out as flags and become business rules.
 - Feature flags can turn into *Operational Flags*.
@@ -210,6 +217,11 @@ Feature flags can be simple configuration settings with Boolean, string or other
 </div>
 
 </div>
+
+---
+
+![bg](./img/background.jpg)
+# Operationalizing Flags
 
 ---
 
@@ -241,11 +253,6 @@ Feature flags can be simple configuration settings with Boolean, string or other
 # Limit the Blast Radius of Change
 
 ![bg right contain](./img/blast-radius.png)
-
----
-
-![bg](./img/background.jpg)
-# Operationalizing Flags
 
 ---
 
@@ -296,10 +303,9 @@ https://github.com/launchdarkly/featureflags/blob/master/2%20-%20Uses.md
 - The development team should share flags and configurations at the end of a sprint so that the right configuration is released.
 - NEVER re-purpose a feature flag
 
-
 ---
 
-# SQL/JSON Models
+# DATA - SQL/JSON Models
 
 - Be additive, never change existing fields
 - If you have to remove a field, obsolete it until there is no possibility of rollback
