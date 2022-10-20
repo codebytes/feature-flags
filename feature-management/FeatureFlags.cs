@@ -2,7 +2,7 @@ namespace feature_management;
 
 public enum FeatureFlags
 {
-    FeatureA,
+    FeatureMessage,
     FlagController,
     Beta
 }

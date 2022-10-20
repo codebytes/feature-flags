@@ -1,8 +1,7 @@
-namespace appconfig_sample
+namespace appconfig_sample;
+public enum FeatureFlags
 {
-    public enum MyFeatureFlags
-    {
-        Beta,
-        FeatureA
-    }
+    Beta,
+    FeatureA,
+    BrowserFilter
 }

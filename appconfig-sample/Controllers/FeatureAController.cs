@@ -11,7 +11,7 @@ namespace appconfig_sample.Controllers
         public FeatureAController(IFeatureManager featureManager) =>
             _featureManager = featureManager;
 
-        [FeatureGate(MyFeatureFlags.Beta)]
+        [FeatureGate(FeatureFlags.Beta)]
         public IActionResult Index() => View();
     }
 }
