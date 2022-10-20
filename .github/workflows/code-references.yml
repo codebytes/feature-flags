@@ -11,6 +11,7 @@ concurrency:
 jobs:
   launchDarklyCodeReferences:
     name: LaunchDarkly Code References
+    environment: launchDarklyQuickstart
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
