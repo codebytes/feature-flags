@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<ul>
+  @foreach(var flag in ViewBag.flags){
+    <li>@flag.FlagName - @flag.Enabled</li>
+  }
+</ul>

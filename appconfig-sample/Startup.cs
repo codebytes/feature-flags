@@ -17,9 +17,12 @@ public class Startup
         services.AddRazorPages();
         services.AddAzureAppConfiguration();
         services.AddFeatureManagement()
+                        .AddFeatureFilter<PercentageFilter>()
+                        .AddFeatureFilter<TimeWindowFilter>()
+                        .AddFeatureFilter<SundayFeatureFilter>()
                         .AddFeatureFilter<TargetingFilter>()
-                        .AddFeatureFilter<BrowserFilter>();
-
+                        .AddFeatureFilter<CookieFeatureFilter>()
+                        .AddFeatureFilter<BrowserFeatureFilter>();
 
         services.AddSingleton<ITargetingContextAccessor, TestTargetingContextAccessor>();
 
