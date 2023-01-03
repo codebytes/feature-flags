@@ -1,7 +1,7 @@
 ---
 marp: true
 theme: gaia
-footer: '@Chris_L_Ayers - https://chrislayers.com'
+footer: '@Chris_L_Ayers - https://chris-ayers.com'
 style: |
   .columns {
     display: grid;
