@@ -42,8 +42,8 @@ style: |
     color: orange;
   }
   @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+transition: fade
 ---
-
 
 ![bg](./img/background.jpg)
 # Feature Flags
@@ -302,6 +302,15 @@ https://github.com/launchdarkly/featureflags/blob/master/2%20-%20Uses.md
 - Have a central location for flags, one place to look at available flags
 - The development team should share flags and configurations at the end of a sprint so that the right configuration is released.
 - NEVER re-purpose a feature flag
+- Deprecate unused features and their flags
+  
+---
+
+# Knight Capital and Feature Flags
+
+* In 2012, Knight Capital Group suffered a trading loss of $440 million in 45 minutes due to a software glitch.
+* The glitch was caused by the release of new software code that was not fully tested before being deployed to production.
+* The code included an old feature that had been previously disabled, but was inadvertently reactivated by the new release.
 
 ---
 
@@ -310,6 +319,43 @@ https://github.com/launchdarkly/featureflags/blob/master/2%20-%20Uses.md
 - Be additive, never change existing fields
 - If you have to remove a field, obsolete it until there is no possibility of rollback
 - Separate the data model from the business logic
+
+---
+
+# Feature Flag Providers
+
+
+<div class="columns">
+<div>
+
+- Azure App Configuration
+- Launch Darkly
+- Split
+- Optimizely
+- Molasses
+
+</div>
+<div>
+
+- Flagship
+- GrowthBook
+- Apptimize
+- Taplytics
+- Harness
+
+</div>
+
+</div>
+  
+---
+
+# OpenFeature
+
+OpenFeature is an open standard for feature flag management. OpenFeature provides a unified API and SDK, with extensibility for open source and commercial offerings.
+
+https://openfeature.dev/
+
+![bg right fit](img/of-architecture.png)
 
 ---
 
