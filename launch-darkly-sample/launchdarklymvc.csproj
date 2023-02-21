@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <UserSecretsId>6811e53f-3176-4850-8777-2896235273a6</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="LaunchDarkly.ServerSdk" Version="6.3.3" />
+      <PackageReference Include="LaunchDarkly.ServerSdk" Version="7.0.0" />
     </ItemGroup>
 
 </Project>

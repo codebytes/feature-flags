@@ -26,8 +26,9 @@ namespace LaunchDarklyQuickstart.Controllers
 
         public IActionResult Index(string email="default email address")
         {
-            User user = LaunchDarkly.Sdk.User.WithKey(email);
-            ViewBag.BetaFeatureEnabled = _ldClient.BoolVariation("beta", user, false);
+            var user = LaunchDarkly.Sdk.User.WithKey(email);
+            var context = LaunchDarkly.Sdk.Context.FromUser(user);
+            ViewBag.BetaFeatureEnabled = _ldClient.BoolVariation("beta", context, false);
             return View();
         }
 
