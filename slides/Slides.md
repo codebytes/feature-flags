@@ -46,7 +46,9 @@ style: |
 transition: fade
 ---
 
-![bg](./img/background.jpg)
+<!-- _footer: 'https://github.com/codebytes/feature-flags' -->
+
+![bg left](./img/background.jpg)
 # Feature Flags
 ## The Art of the IF and Deployment
 
@@ -167,7 +169,7 @@ if (featureFlag) {
 
 #### <i class="fa fa-check-square-o"></i> Allow Users to Opt In
 #### <i class="fa fa-users"></i> Block Users
-#### <i class="fa fa-newspaper-o"></i> Subscriptions
+#### <i class="fa fa-newspaper"></i> Subscriptions
 #### <i class="fa fa-sliders"></i> Advanced Users
 #### <i class="fa fa-wrench"></i> Maintenance Mode
 #### <i class="fa fa-line-chart"></i> Load Management
