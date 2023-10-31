@@ -1,48 +1,7 @@
 ---
 marp: true
-theme: gaia
+theme: custom-gaia
 footer: '@Chris_L_Ayers - https://chris-ayers.com'
-style: |
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
-  .fa-th-large {
-    color: blue;
-  }
-  .fa-users {
-    color: orange;
-  }
-  .fa-refresh {
-    color: green;
-  }
-  .fa-flask {
-    color: brown;
-  }
-  .fa-ban {
-    color: red;
-  }
-  .fa-dollar {
-    color: orange;
-  }
-  .fa-gears {
-    color: brown;
-  }
-  .fa-code {
-    color: blue;
-  }
-  .fa-flag {
-    color: green;
-  }
-  .fa-line-chart {
-    color: red;
-  }
-  .fa-bar-chart {
-    color: orange;
-  }
-  @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css';
-  
 transition: fade
 ---
 
