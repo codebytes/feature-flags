@@ -1,6 +1,6 @@
 # Feature Flags: The Art of the IF and Deployment
 
-This repository contains the slide deck, demos, and additional resources for the "Feature Flags: The Art of the IF and Deployment" talk by Chris Ayers, Senior Customer Engineer at Microsoft. The talk provides an in-depth look at feature flags, their uses, operationalizing flags, and best practices.
+This repository contains the slide deck, demos, and additional resources for the "Feature Flags: The Art of the IF and Deployment" talk by Chris Ayers, Principal Software Engineer at Microsoft. The talk provides an in-depth look at feature flags, their uses, operationalizing flags, and best practices.
 
 ## Slides
 
