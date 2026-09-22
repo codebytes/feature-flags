@@ -17,7 +17,7 @@ transition: fade
 
 ## Chris Ayers
 
-### Principal Software Engineer<br>Azure CXP AzRel<br>Microsoft
+### Principal Software Engineer<br>Azure EngOps AzRel<br>Microsoft
 
 <i class="fa-brands fa-bluesky"></i> BlueSky: [@chris-ayers.com](https://bsky.app/profile/chris-ayers.com)
 <i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
@@ -128,7 +128,7 @@ if (featureFlag) {
 </div>
 <div>
 
-#### <i class="fa fa-check-square-o"></i> Allow Users to Opt In
+#### <i class="fa-regular fa-square-check"></i> Allow Users to Opt In
 #### <i class="fa fa-users"></i> Block Users
 #### <i class="fa fa-newspaper"></i> Subscriptions
 #### <i class="fa fa-sliders"></i> Advanced Users
@@ -162,19 +162,20 @@ if (featureFlag) {
 </div>
 
 ---
-<div class="columns">
-<div>
 
 # Not all Flags are the same
 
-
-</div>
+<div class="columns">
 <div>
 
 ## Long Term
 
 - Features can start out as flags and become business rules.
 - Feature flags can turn into *Operational Flags*.
+
+</div>
+<div>
+
 - You can leverage patterns instead of just an ***if*** statement
     - Strategy Pattern
     - Visitor Pattern 
@@ -231,7 +232,7 @@ if (featureFlag) {
   - Dynamically?
 
 
-![bg right:50% contain](./img/feature-flag-management.png)
+![bg right:45% contain](./img/feature-flag-management.png)
 
 ---
 
@@ -249,7 +250,7 @@ table {
 
 |Targeting|Percentages|Triggers
 |-|-|-|
-|	<i class="fa fa-clock-o"></i> Time<br><i class="fa fa-map-o"></i> Region<br><i class="fa fa-user-circle-o"></i> User Details|<i class="fa fa-percent"></i> 10%/90%<br><i class="fa fa-percent"></i> 50%/50%|<i class="fa fa-line-chart"></i> Rise in failures<br><i class="fa fa-bar-chart"></i> Load
+|	<i class="fa-regular fa-clock"></i> Time<br><i class="fa-regular fa-map"></i> Region<br><i class="fa-regular fa-circle-user"></i> User Details|<i class="fa fa-percent"></i> 10%/90%<br><i class="fa fa-percent"></i> 50%/50%|<i class="fa fa-line-chart"></i> Rise in failures<br><i class="fa fa-bar-chart"></i> Load
 
 ---
 
@@ -321,7 +322,11 @@ OpenFeature is an open standard for feature flag management. OpenFeature provide
 
 https://openfeature.dev/
 
-![bg right fit](img/of-architecture.png)
+---
+
+# OpenFeature
+
+![width:1140px](img/of-architecture.png)
 
 ---
 

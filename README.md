@@ -22,4 +22,4 @@ Explore feature flags, their uses, operational practices, and best practices wit
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the [MIT License](https://opensource.org/license/mit).
