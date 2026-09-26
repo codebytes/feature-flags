@@ -1,0 +1,33 @@
+name: Code reference package validation
+on:
+  pull_request:
+    branches: [main]
+    paths: ['.github/workflows/code-references.yml', '.github/workflows/code-reference-package.yml']
+  push:
+    branches: [main]
+    paths: ['.github/workflows/code-references.yml', '.github/workflows/code-reference-package.yml']
+permissions:
+  contents: read
+jobs:
+  package-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Build the selected public action package without service credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          action_ref=$(sed -n 's/.*uses: launchdarkly\/find-code-references@\(v[0-9.]*\).*/\1/p' .github/workflows/code-references.yml)
+          [[ "$action_ref" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          mkdir "$RUNNER_TEMP/code-reference-package"
+          curl --fail --silent --show-error --location "https://raw.githubusercontent.com/launchdarkly/find-code-references/$action_ref/Dockerfile" --output "$RUNNER_TEMP/code-reference-package/Dockerfile"
+          grep -E '^FROM launchdarkly/ld-find-code-refs-github-action:[0-9]+\.[0-9]+\.[0-9]+$' "$RUNNER_TEMP/code-reference-package/Dockerfile"
+          docker build --pull --tag code-reference-package-validation "$RUNNER_TEMP/code-reference-package"
+          container_id=$(docker create --network none code-reference-package-validation)
+          trap 'docker rm "$container_id" >/dev/null' EXIT
+          docker cp "$container_id:/ld-find-code-refs-github-action" "$RUNNER_TEMP/scanner-entrypoint"
+          test -s "$RUNNER_TEMP/scanner-entrypoint"
+          file "$RUNNER_TEMP/scanner-entrypoint"
