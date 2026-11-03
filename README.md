@@ -6,6 +6,13 @@ Explore feature flags, their uses, operational practices, and best practices wit
 
 [View HTML slides](https://chris-ayers.com/feature-flags/) | [Download PDF](https://chris-ayers.com/feature-flags/Slides.pdf)
 
+## Recordings
+
+- [.NET DC User Group](https://www.youtube.com/watch?v=AHH84gEudQA)
+- [Cloud With Chris](https://www.youtube.com/watch?v=f5AIx_90Bxo)
+- [PowerShell.org](https://www.youtube.com/watch?v=lSX0b6_EW7I)
+- [Music City Tech 2021](https://www.youtube.com/watch?v=qG1TMo2NvTU)
+
 ## Resources
 
 - [Slide source](slides/Slides.md)
